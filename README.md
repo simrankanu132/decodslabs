@@ -1,2 +1,2 @@
-# decodslabs
+# decodslabs internship
 decodelabs descriptions 
