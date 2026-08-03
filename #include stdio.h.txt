@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+void toLower(char *str) {
+    for (int i = 0; str[i]; i++)
+        str[i] = tolower(str[i]);
+}
+
+int main() {
+    char input[100];
+
+    printf("Simple Chatbot (type 'bye' to exit)\n");
+    printf("-------------------------------------\n");
+
+    while (1) {
+        printf("You: ");
+        fgets(input, sizeof(input), stdin);
+
+        input[strcspn(input, "\n")] = 0;
+        toLower(input);
+
+        if (strstr(input, "hi") || strstr(input, "hello") || strstr(input, "hey")) {
+            printf("Bot: Hello! How can I help you today?\n");
+        }
+        else if (strstr(input, "how are you")) {
+            printf("Bot: I'm just a program, but I'm doing great!\n");
+        }
+        else if (strstr(input, "your name")) {
+            printf("Bot: I'm a simple rule-based chatbot.\n");
+        }
+        else if (strstr(input, "help")) {
+            printf("Bot: You can say hi, ask my name, or say bye to exit.\n");
+        }
+        else if (strstr(input, "thank")) {
+            printf("Bot: You're welcome!\n");
+        }
+        else if (strstr(input, "bye") || strstr(input, "exit") || strstr(input, "quit")) {
+            printf("Bot: Goodbye! Have a nice day.\n");
+            break;
+        }
+        else {
+            printf("Bot: Sorry, I don't understand that. Type 'help' for options.\n");
+        }
+
+        input[0] = '\0'; // clear buffer for next input
+    }
+
+    return 0;
+}
